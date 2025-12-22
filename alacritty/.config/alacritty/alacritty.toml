@@ -1,0 +1,30 @@
+[general]
+import = [
+"~/.config/alacritty/themes/themes/nightfly.toml",
+]
+live_config_reload = true
+working_directory = "None"
+
+[window]
+decorations = "Full"
+startup_mode = "Maximized"
+
+[colors.primary]
+foreground = "#ffffff"
+
+[font]
+size = 18
+normal = { family="0xProtoNerdFontMono", style="Regular" }
+bold = { family="0xProtoNerdFontMono", style="Bold" }
+italic = { family="0xProtoNerdFontMono", style="Italic" }
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = { shape="Block", blinking="On" }
+
+[env]
+TERM = "xterm-256color"
+
+
