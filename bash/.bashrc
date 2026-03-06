@@ -109,7 +109,6 @@ alias la='ls -lha'
 alias l='ls -CF'
 alias python-server='python3 -m http.server'
 alias clip='xclip -sel clip'
-alias firefox='firefox -p'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -131,7 +130,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load host-specific overrides
-HOST_RC="$HOME/.bashrc.$(hostname -s)"
-[[ -r "$HOST_RC" ]] && source "$HOST_RC"
-. "$HOME/.cargo/env"
+PATH="/opt/zen/:/usr/sbin/:$PATH"
+
+# Rust
+if [ -f /$HOME/.cargo/env ]; then
+    . "$HOME/.cargo/env"
+fi
+

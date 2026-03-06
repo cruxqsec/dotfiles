@@ -1,6 +1,6 @@
 [general]
 import = [
-"~/.config/alacritty/themes/themes/nightfly.toml",
+"~/.config/alacritty/nightfly.toml",
 ]
 live_config_reload = true
 working_directory = "None"
@@ -13,10 +13,10 @@ startup_mode = "Maximized"
 foreground = "#ffffff"
 
 [font]
-size = 18
-normal = { family="0xProtoNerdFontMono", style="Regular" }
-bold = { family="0xProtoNerdFontMono", style="Bold" }
-italic = { family="0xProtoNerdFontMono", style="Italic" }
+size = 14
+normal = { family="RobotoMonoNerdFont", style="Regular" }
+bold = { family="RobotoMonoNerdFont", style="Bold" }
+italic = { family="RobotoMonoNerdFont", style="Italic" }
 
 [selection]
 save_to_clipboard = true
