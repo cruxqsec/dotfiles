@@ -57,21 +57,33 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 set_prompt() {
-    local ip vpn
+    local ip vpn_indicator venv_indicator
+    
+    # Virtual environment detection
+    if [ -n "$VIRTUAL_ENV" ]; then
+        venv_indicator="\[\e[1;33m\]($(basename "$VIRTUAL_ENV"))\[\e[1;32m\]─"
+    else
+        venv_indicator=""
+    fi
 
+    # IP detection
     ip=$(ip -4 -o addr show wlp3s0 2>/dev/null | awk '{print $4}' | sed 's/\/.*//')
-
     if pgrep openvpn >/dev/null; then
         ip=$(ip -4 -o addr show tun0 2>/dev/null | awk '{print $4}' | sed 's/\/.*//')
     fi
 
     PS1='\[\e[1;32m\]┌─'
+    PS1+="${venv_indicator}"
     PS1+="[\[\e[1;37m\]$ip\[\e[1;32m\]]─"
     PS1+="[\[\e[1;31m\]\u\[\e[1;32m\]@\[\e[1;96m\]\h\[\e[1;32m\]]─"
     PS1+="[\[\e[1;37m\]\w\[\e[1;32m\]]"
     PS1+=$'\n'
     PS1+="└──╼ $ \[\e[0m\]"
 }
+
+# Prevent venv from modifying PS1 on its own
+VIRTUAL_ENV_DISABLE_PROMPT=1
+
 PROMPT_COMMAND=set_prompt
 
 # Set 'man' colors
@@ -109,6 +121,7 @@ alias la='ls -lha'
 alias l='ls -CF'
 alias python-server='python3 -m http.server'
 alias clip='xclip -sel clip'
+alias python='python3'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
